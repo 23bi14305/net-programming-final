@@ -111,8 +111,7 @@ class game_progess():
 
         # Step 3: Send rank and score to each player
         for rank, (score, player) in enumerate(scores, start=1):
-            send_menu_msg = send_menu(player.socket, player_list)
-            message = f"Rank: {rank}, Score: {score}. {send_menu_msg}"
+            message = f"Rank: {rank}, Score: {score}."
             try:
                 player.socket.sendall(message.encode())
             except Exception as e:
@@ -187,7 +186,6 @@ def game_room_handle(roomid,message_queue,sockfd_list):
     game.time_up()
     game.announce_results()
     message_queue.add_finished_msg(roomid)
-#useless
 
 
 class player():
